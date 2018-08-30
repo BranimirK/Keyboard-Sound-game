@@ -8,9 +8,11 @@
 <script type="text/paperscript" canvas="myCanvas">
 
 function onKeyDown(event) {
-var maxPoint = new Point(view.size.width, view.size.height);
+	var maxPoint = new Point(view.size.width, view.size.height);
+	var randomPoint = Point.random();
+	var point = maxPoint * randomPoint;
 console.log(maxPoint);
-	new Path.Circle(new Point(maxPoint), 15).fillColor = 'red';
+	new Path.Circle(point, 15).fillColor = 'red';
 }
 
 	
