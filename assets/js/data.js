@@ -1,40 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Keyboard Sound Game</title>
-
-<script type="text/javascript" src="paper-full.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/css/keySoundGame.css">
-<script type="text/paperscript" canvas="myCanvas">
-
-var circles = [];
-
-function onKeyDown(event) {
-	if (keyData[event.key]){
-		var maxPoint = new Point(view.size.width, view.size.height);
-		var randomPoint = Point.random();
-		var point = maxPoint * randomPoint;
-		var newCircle = new Path.Circle(point, 500);
-		newCircle.fillColor = keyData[event.key].color;
-		keyData[event.key].sound.play();
-		circles.push(newCircle);
-	}
-}
-
-function onFrame(event){
-	for(var i=0; i<circles.length; i++){
-		console.log(circles[i]);
-		circles[i].fillColor.hue += 1;
-		circles[i].scale(.92);
-		if (circles[i].area < 1){
-			circles[i].remove();
-			circles.splice(i,1);
-		}
-	}
-}
-
-
 var keyData = {
 q: {
 sound: new Howl({
@@ -193,10 +156,3 @@ sound: new Howl({
 color: '#2c3e50'
 }
 }
-</script>
-</head>
-<body>
-
-<canvas id="myCanvas" resize></canvas>
-</body>
-</html>
